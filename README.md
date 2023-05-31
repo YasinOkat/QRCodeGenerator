@@ -18,7 +18,7 @@ This project is a simple QR code generator developed for Movus Logistics. It all
 
    ```bash
    git clone https://github.com/yasinokat/QRCodeGenerator.git
-   cd barcode-qr-generator
+   cd qr-generator
 
 2. Install the required dependencies:
 
