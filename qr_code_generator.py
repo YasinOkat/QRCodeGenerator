@@ -2,10 +2,7 @@ import qrcode
 from PIL import Image, ImageDraw, ImageFont
 import os
 
-directory = os.getcwd()
-print(directory + " ")
-
-fontpath = directory + "/" + "bin" + "/" + "/LiberationSans-Regular.ttf"
+fontpath = "./bin/LiberationSans-Regular.ttf"
 
 device_map = {
     1: 'LPC-2023-',
@@ -107,7 +104,7 @@ if cihaz == 5 or cihaz == 7 or cihaz == 11 or cihaz == 16 or cihaz == 18:
         qr.add_data(kod + sifirSayisi + str(i))
         qr.make(fit=True)
         img_qr = qr.make_image()
-        logo = Image.open(directory + "/" + "bin" + "/" + "movus2.jpeg")
+        logo = Image.open("./bin/movus2.jpeg")
         draw = ImageDraw.Draw(logo)
         font = ImageFont.truetype(fontpath, 40)
         draw.text((int(530), (int(img_qr.size[1]))),
@@ -121,36 +118,36 @@ if cihaz == 5 or cihaz == 7 or cihaz == 11 or cihaz == 16 or cihaz == 18:
 
     for i, j in zip(range(itibaren, itibaren + 2), (range(0, kadar - itibaren))):
         sifirSayisi = sifirlari_kontrol_et(itibaren + j)
-        newlogo = Image.open(directory + "/" + kod + sifirSayisi + str(itibaren + j) + ".png")
+        newlogo = Image.open("./" + kod + sifirSayisi + str(itibaren + j) + ".png")
         sifirSayisi = sifirlari_kontrol_et(itibaren + j + 1)
-        newLogo1 = Image.open(directory + "/" + kod + sifirSayisi + str(itibaren + j + 1) + ".png")
+        newLogo1 = Image.open("./" + kod + sifirSayisi + str(itibaren + j + 1) + ".png")
         pos = (900 + j * 900, 0)
         newlogo.paste(newLogo1, pos)
-        newlogo.save(directory + "/" + kod + sifirSayisi + str(itibaren + j + 1) + ".png")
+        newlogo.save("./" + kod + sifirSayisi + str(itibaren + j + 1) + ".png")
 
     for i, j in zip(range(itibaren + 3, itibaren + 6), (range(0, kadar - itibaren - 2))):
         if kadar - itibaren > 2:
             sifirSayisi = sifirlari_kontrol_et(itibaren + j + 2)
-            newlogo = Image.open(directory + "/" + kod + sifirSayisi + str(itibaren + j + 2) + ".png")
+            newlogo = Image.open("./" + kod + sifirSayisi + str(itibaren + j + 2) + ".png")
             sifirSayisi = sifirlari_kontrol_et(itibaren + j + 3)
-            newLogo1 = Image.open(directory + "/" + kod + sifirSayisi + str(itibaren + j + 3) + ".png")
+            newLogo1 = Image.open("./" + kod + sifirSayisi + str(itibaren + j + 3) + ".png")
             pos = (0 + j * 900, 450)
             newlogo.paste(newLogo1, pos)
-            newlogo.save(directory + "/" + kod + sifirSayisi + str(itibaren + j + 3) + ".png")
+            newlogo.save("./" + kod + sifirSayisi + str(itibaren + j + 3) + ".png")
 
     for i, j in zip(range(itibaren + 6, itibaren + 9), (range(0, kadar - itibaren - 5))):
         if kadar - itibaren > 5:
             sifirSayisi = sifirlari_kontrol_et(itibaren + j + 5)
-            newlogo = Image.open(directory + "/" + kod + sifirSayisi + str(itibaren + j + 5) + ".png")
+            newlogo = Image.open("./" + kod + sifirSayisi + str(itibaren + j + 5) + ".png")
             sifirSayisi = sifirlari_kontrol_et(itibaren + j + 6)
-            newLogo1 = Image.open(directory + "/" + kod + sifirSayisi + str(itibaren + j + 6) + ".png")
+            newLogo1 = Image.open("./" + kod + sifirSayisi + str(itibaren + j + 6) + ".png")
             pos = (0 + j * 900, 900)
             newlogo.paste(newLogo1, pos)
-            newlogo.save(directory + "/" + kod + sifirSayisi + str(itibaren + j + 6) + ".png")
+            newlogo.save("./" + kod + sifirSayisi + str(itibaren + j + 6) + ".png")
 
     for i in range(itibaren, kadar):
         sifirSayisi = sifirlari_kontrol_et(i)
-        os.remove(directory + "/" + kod + sifirSayisi + str(i) + ".png")
+        os.remove("./" + kod + sifirSayisi + str(i) + ".png")
 else:
 
     qr = qrcode.QRCode(
@@ -165,7 +162,7 @@ else:
         qr.add_data(kod + sifirSayisi + str(i))
         qr.make(fit=True)
         img_qr = qr.make_image()
-        logo = Image.open(directory + "/" + "bin" + "/" + "movus.jpeg")
+        logo = Image.open("./" + "bin" + "/" + "movus.jpeg")
         draw = ImageDraw.Draw(logo)
         font = ImageFont.truetype(fontpath, 40)
         draw.text((int(logo.size[0] - img_qr.size[0] + 110), (int(logo.size[1] - 90))),
